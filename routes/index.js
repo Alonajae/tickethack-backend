@@ -10,15 +10,20 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/trips', (req, res) => {
+  if(!req.body.departure || !req.body.arrival || !req.body.date){
+    res.json({result: false, message: 'Empty fields, please try again.'})
+    return; 
+  }
   Trip.find({departure: req.body.departure, arrival: req.body.arrival, date: req.body.date})
   .then(data => {
     if (data !== null){
     res.json({result: true, allTrips: data})}
     else {
-      res.json({result: false, message: 'There is no trip available for this research'})
+      res.json({result: false, message: 'There is no trip available for this research.'})
     }
   })
 })
+
 
 
 module.exports = router;
