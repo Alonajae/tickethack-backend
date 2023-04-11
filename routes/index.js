@@ -3,6 +3,7 @@ var router = express.Router();
 
 const mongoose = require('mongoose');
 const Trip = require('../models/trips')
+const { checkBody } = require('../modules/checkBody')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,7 +20,7 @@ router.post('/trips', (req, res) => {
     if (data !== null){
     res.json({result: true, allTrips: data})}
     else {
-      res.json({result: false, message: 'There is no trip available for this research.'})
+      res.json({result: false, message: 'No trip found.'})
     }
   })
 })
