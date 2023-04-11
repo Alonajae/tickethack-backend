@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/trips', (req, res) => {
+router.post('/trips', (req, res) => {
   Trip.find({departure: req.body.departure, arrival: req.body.arrival, date: req.body.date})
   .then(data => {
     if (data !== null){
