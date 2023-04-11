@@ -11,9 +11,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/trips', (req, res) => {
-  if(!req.body.departure || !req.body.arrival || !req.body.date){
-    res.json({result: false, message: 'Empty fields, please try again.'})
-    return; 
+  if(checkBody(req.body, keys) === false){
+    res.json({result: false, message: "Empty fields, try again."})
+    return;
   }
   Trip.find({departure: req.body.departure, arrival: req.body.arrival, date: req.body.date})
   .then(data => {
