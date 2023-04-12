@@ -54,7 +54,7 @@ router.post('/trips', (req, res) => {
 router.get('/cart', (req, res) => {
   Cart.find()
     .then(data => {
-      if (data) {
+      if (data !== null) {
         res.json({ result: true, cart: data })
       } else {
         res.json({result: false, message: "No items in the cart yet."})
