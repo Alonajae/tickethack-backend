@@ -7,6 +7,6 @@ const userSchema = mongoose.Schema({
     bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'cart' }]
 })
 
-const User = mongoose.model('trips', userSchema)
+const User = mongoose.model('users', userSchema)
 
 module.exports = User;

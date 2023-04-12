@@ -3,7 +3,9 @@ var router = express.Router();
 
 const moment = require('moment');
 const mongoose = require('mongoose');
-const Trip = require('../models/trips')
+const Trip = require('../models/trips');
+const Cart= require('../models/carts');
+const User= require('../models/users');
 const { checkBody } = require('../modules/checkBody')
 
 /* GET home page. */
@@ -47,6 +49,13 @@ router.post('/trips', (req, res) => {
         }
       }
     })
+})
+
+router.get('/cart', (req, res)=> {
+  Cart.find()
+  .then(data => {
+      res.json({result: true, cart: data})
+  })
 })
 
 
