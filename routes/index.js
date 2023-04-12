@@ -62,6 +62,17 @@ router.get('/cart', (req, res) => {
     })
 })
 
+router.post('/cart', (req, res)=> {
+  const newCart= new Cart({
+    departure: req.body.departure,
+    arrival: req.body.arrival,
+    date: req.body.date,
+    price: req.body.price
+  })
+  newCart.save()
+  .then(res.json({result:true, message: 'New cart saved.'}))
+})
+
 
 
 module.exports = router;
