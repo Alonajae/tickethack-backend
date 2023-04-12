@@ -18,10 +18,8 @@ router.post('/trips', (req, res) => {
     return;
   }
 
-  let date = req.body.date.replaceAll('/', ' ')
-  let format = date.split(' ')
+  let format = req.body.date.replaceAll('/', ' ').split(' ')
   let formated = format[1] + '/' + format[0] + '/' + format[2]
-  console.log(formated)
 
   Trip.find({ departure: { $regex: req.body.departure }, arrival: { $regex: req.body.arrival } })
     .then(data => {
