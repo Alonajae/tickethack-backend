@@ -8,7 +8,7 @@ const Cart= require('../models/carts');
 router.get('/', (req, res)=> {
     Cart.find()
     .then(data => {
-        res.json({result: true, allCarts: data})
+        res.json({result: true, cart: data})
     })
 })
 
