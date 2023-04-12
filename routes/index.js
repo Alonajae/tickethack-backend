@@ -33,6 +33,7 @@ router.post('/trips', (req, res) => {
         const List = []
         for (const trips of data) {
           if (moment(trips.date).format('L') === formated) {
+            trips.date = moment(trips.date).format('LT')
             List.push(trips)
           }
         }
